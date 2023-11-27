@@ -104,13 +104,22 @@ const changeProfileImage = () => {
     setLoginModalVisible(true);
   };
 
+  const [loggedInEmail, setLoggedInEmail] = useState('');
+
   const handleLogin = () => {
-    if (email === 'seuemail@gmail.com' && password === 'suasenha') {
+
+      // Permitir o login independentemente do e-mail e senha inseridos
+      setLoggedInEmail(email);
       setLoggedIn(true);
       setLoginModalVisible(false);
-    } else {
-      alert('Credenciais inválidas. Por favor, verifique seu email e senha.');
-    }
+    
+
+    // if (email === 'seuemail@gmail.com' && password === 'suasenha') {
+    //   setLoggedIn(true);
+    //   setLoginModalVisible(false);
+    // } else {
+    //   alert('Email ou senha incorretos.');
+    // }
   };
 
   const handleGoogleLogin = () => {
@@ -190,43 +199,41 @@ const changeProfileImage = () => {
         </Modal>
       )}
 
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={loginModalVisible}
-        onRequestClose={() => setLoginModalVisible(false)}>
-        <View style={styles.loginModalContainer}>
-          <View style={styles.loginModalContent}>
-            <Text style={styles.modalText}>Login/Cadastro</Text>
-            <TextInput
-              style={[styles.input, styles.emailInput]}
-              placeholder="Email"
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-            <View style={styles.passwordContainer}>
-              <TextInput
-                style={[styles.input, styles.passwordInput]}
-                placeholder="Senha"
-                secureTextEntry={!showPassword}
-                value={password}
-                onChangeText={(text) => setPassword(text)}
-              />
-              <TouchableOpacity style={styles.showPasswordButton} onPress={() => setShowPassword(!showPassword)}>
-                <Text style={styles.showPasswordButtonText}>{showPassword ? 'Ocultar' : 'Mostrar'}</Text>
-              </TouchableOpacity>
-            </View>
-            <Button title="Login" onPress={handleLogin} />
-            <TouchableOpacity style={styles.googleButton} onPress={handleGoogleLogin}>
-              <Image
-                source={{ uri: 'https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/google-512.png' }}
-                style={styles.googleButtonImage}
-              />
-            </TouchableOpacity>
-            <Button title="Fechar" onPress={() => setLoginModalVisible(false)} />
-          </View>
-        </View>
-      </Modal>
+<Modal
+  animationType="fade"
+  transparent={true}
+  visible={loginModalVisible}
+  onRequestClose={() => setLoginModalVisible(false)}>
+  <View style={styles.loginModalContainer}>
+    <View style={styles.loginModalContent}>
+      <Text style={styles.modalText}>Login/Cadastro</Text>
+      <TextInput
+        style={[styles.input, styles.emailInput]}
+        placeholder="Email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
+      <TextInput
+        style={[styles.input, styles.passwordInput]}
+        placeholder="Senha"
+        secureTextEntry={!showPassword}
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+      />
+      <TouchableOpacity style={styles.showPasswordButton} onPress={() => setShowPassword(!showPassword)}>
+        <Text style={styles.showPasswordButtonText}>{showPassword ? 'Ocultar' : 'Mostrar'}</Text>
+      </TouchableOpacity>
+      <Button title="Login" onPress={handleLogin} />
+      {/* <TouchableOpacity style={styles.googleButton} onPress={handleGoogleLogin}>
+        <Image
+          source={{ uri: 'https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/google-512.png' }}
+          style={styles.googleButtonImage}
+        />
+      </TouchableOpacity> */}
+      <Button title="Fechar" onPress={() => setLoginModalVisible(false)} />
+    </View>
+  </View>
+</Modal>
 
       <Modal
         animationType="fade"
@@ -238,7 +245,7 @@ const changeProfileImage = () => {
             <Text style={styles.modalText}>Perfil</Text>
             <Image source={{ uri: profileImages[currentImageIndex] }} style={styles.profileImage} />
             <Text style={styles.profileText}>Nome: Gustavo D. Silva</Text>
-            <Text style={styles.profileText}>Email: seuemail@gmail.com</Text>
+            <Text style={styles.profileText}>Email: {loggedInEmail}</Text>
             <Button title="Trocar Imagem de Perfil" onPress={changeProfileImage} />
             <Button title="Fechar" onPress={() => setProfileModalVisible(false)} />
           </View>
@@ -319,6 +326,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   passwordInput: {
+    marginBottom: 20,
+  },
+  showPasswordButton: {
     marginBottom: 20,
   },
   loginButton: {
