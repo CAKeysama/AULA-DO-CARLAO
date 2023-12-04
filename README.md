@@ -23,15 +23,7 @@ Este repositório contém o projeto desenvolvido para a aula de Desenvolvimento 
     npm install
     ```
 
-3. **Adicionar a Pasta do Node:**
-
-    É necessário adicionar a pasta `node_modules` ao projeto. Como as dependências são instaladas localmente, elas não são incluídas no repositório Git. Execute o seguinte comando após a instalação das dependências:
-
-    ```bash
-    npm install
-    ```
-
-4. **Iniciar o Projeto:**
+3. **Iniciar o Projeto:**
 
     ```bash
     expo start
