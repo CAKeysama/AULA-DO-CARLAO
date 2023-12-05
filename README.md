@@ -26,15 +26,15 @@ Este repositório contém o projeto desenvolvido para a aula de Desenvolvimento 
 3. **Iniciar o Projeto:**
 
     ```bash
-    expo start
+    npm run android
     ```
 
-    Isso abrirá o Metro Bundler no navegador. Você pode escanear o código QR gerado com o aplicativo Expo Go em seu dispositivo móvel para visualizar o aplicativo.
+    Isso abrirá o Metro Bundler no seu virtualizador. Você pode escanear o código QR gerado com o aplicativo Expo Go em seu dispositivo móvel para visualizar o aplicativo.
 
 ## Estrutura do Projeto
 
 - `src/`: Contém o código-fonte do aplicativo React Native.
-- `node_modules/`: Pasta onde as dependências do Node.js são instaladas. Não inclua no repositório, mas necessário para o funcionamento do projeto.
+- `node_modules/`: Pasta onde as dependências do Node.js são instaladas. Não incluida no repositório, mas necessário para o funcionamento do projeto.
 
 ## Contribuindo
 
